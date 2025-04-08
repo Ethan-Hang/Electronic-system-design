@@ -32,6 +32,6 @@ int main()
         // GPIO_ResetBits(GPIOB, GPIO_Pin_15); //设置GPIOB15引脚为高电平
         
         // GPIOB->BSRR = GPIO_BSRR_BR15;  // PB15 = 0
-        GPIOB->BSRR = GPIO_BSRR_BS15;  // PB15 = 1
+        // GPIOB->BSRR = GPIO_BSRR_BS15;  // PB15 = 1
     } 
 }
