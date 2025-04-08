@@ -7,7 +7,7 @@
 #include "Keyboard.h"
 #include "Key.h"
 
-bool ledflash = false; // LED闪烁状态
+bool g_ledflash = false; // LED闪烁状态
 
 void Task1(void);
 void Task2(void);
@@ -34,7 +34,7 @@ void Task1(void)
         while (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_12) == 0)
             ; // 等待按键释放
         Delay_ms(2);
-        ledflash = !ledflash; // 切换LED闪烁状态
+        g_ledflash = !g_ledflash; // 切换LED闪烁状态
     }
     if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_15) == 0) // 按键按下
     {
@@ -42,10 +42,10 @@ void Task1(void)
         while (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_15) == 0)
             ; // 等待按键释放
         Delay_ms(2);
-        ledflash = !ledflash; // 切换LED闪烁状态
+        g_ledflash = !g_ledflash; // 切换LED闪烁状态
     }
 
-    if (ledflash) // LED闪烁状态为真
+    if (g_ledflash) // LED闪烁状态为真
     {
         LED_Flash(); // 调用LED闪烁函数
     }

@@ -29,9 +29,9 @@ int main()
     GPIO_Register(); //注册GPIOB15引脚
     while (1)
     {
-        // GPIO_ResetBits(GPIOB, GPIO_Pin_15); //设置GPIOB15引脚为高电平
+        // GPIO_ResetBits(GPIOB, GPIO_Pin_15);
         
-        // GPIOB->BSRR = GPIO_BSRR_BR15;  // PB15 = 0
+        GPIOB->BSRR = GPIO_BSRR_BR15;  // PB15 = 0
         // GPIOB->BSRR = GPIO_BSRR_BS15;  // PB15 = 1
     } 
 }
