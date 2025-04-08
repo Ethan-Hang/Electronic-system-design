@@ -24,7 +24,12 @@ int main()
         {
             OLED_ShowCN(2, i - 2, i);
         }
-        OLED_ShowNum(2, 5, 3230515068, 10);
+        OLED_ShowNum(2, 7, 3230515068, 10);
+        for (uint8_t i = 6; i <= 7; i++)
+        {
+            OLED_ShowCN(3, i - 5, i);
+        }
+        OLED_ShowNum(3, 5, 3230621101, 10);
 
     }
 }
