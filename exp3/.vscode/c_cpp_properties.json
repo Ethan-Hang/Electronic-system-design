@@ -3,12 +3,11 @@
         {
             "name": "Target 1",
             "includePath": [
-                "g:\\Keil uVision5\\STM32\\4.1 OLED\\Start",
-                "g:\\Keil uVision5\\STM32\\4.1 OLED\\Library",
-                "g:\\Keil uVision5\\STM32\\4.1 OLED\\User",
-                "g:\\Keil uVision5\\STM32\\4.1 OLED\\System",
-                "g:\\Keil uVision5\\STM32\\4.1 OLED\\Hardware",
-                "g:\\Keil uVision5\\STM32\\4.1 OLED"
+                "g:\\Keil uVision5\\Electronic system design\\exp3\\Start",
+                "g:\\Keil uVision5\\Electronic system design\\exp3\\Library",
+                "g:\\Keil uVision5\\Electronic system design\\exp3\\User",
+                "g:\\Keil uVision5\\Electronic system design\\exp3\\System",
+                "g:\\Keil uVision5\\Electronic system design\\exp3\\Hardware"
             ],
             "defines": [
                 "USE_STDPERIPH_DRIVER",
