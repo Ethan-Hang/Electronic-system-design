@@ -705,6 +705,46 @@
               <FileType>5</FileType>
               <FilePath>.\Hardware\OLED_Font.h</FilePath>
             </File>
+            <File>
+              <FileName>Buffer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\Buffer.c</FilePath>
+            </File>
+            <File>
+              <FileName>Buffer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\Buffer.h</FilePath>
+            </File>
+            <File>
+              <FileName>LED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\LED.c</FilePath>
+            </File>
+            <File>
+              <FileName>LED.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\LED.h</FilePath>
+            </File>
+            <File>
+              <FileName>Key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\Key.c</FilePath>
+            </File>
+            <File>
+              <FileName>Key.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\Key.h</FilePath>
+            </File>
+            <File>
+              <FileName>Keyboard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Hardware\Keyboard.c</FilePath>
+            </File>
+            <File>
+              <FileName>Keyboard.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Hardware\Keyboard.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
