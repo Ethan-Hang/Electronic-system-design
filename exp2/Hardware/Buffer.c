@@ -1,4 +1,5 @@
 #include "stm32f10x.h"
+#include "delay.h"
 
 void Buffer_Init(void)
 {
@@ -8,14 +9,23 @@ void Buffer_Init(void)
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7; //选择引脚
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; //设置引脚速度
     GPIO_Init(GPIOA, &GPIO_InitStructure); //初始化GPIOB0、GPIOB1、GPIOB2引脚
+
+    GPIO_SetBits(GPIOA, GPIO_Pin_7); //设置GPIOB0、GPIOB1、GPIOB2引脚为高电平
 }
 
 void Buffer_Set(void)
 {
-    GPIO_ResetBits(GPIOA, GPIO_Pin_7); //设置GPIOB0、GPIOB1、GPIOB2引脚为高电平
+    GPIO_ResetBits(GPIOA, GPIO_Pin_7); //设置GPIOB0、GPIOB1、GPIOB2引脚为低电平
 }
 
 void Buffer_Clr(void)
 {
-    GPIO_SetBits(GPIOA, GPIO_Pin_7); //设置GPIOB0、GPIOB1、GPIOB2引脚为低电平
+    GPIO_SetBits(GPIOA, GPIO_Pin_7); //设置GPIOB0、GPIOB1、GPIOB2引脚为高电平
+}
+
+void Buffer_Once(void)
+{
+    Buffer_Set(); //设置GPIOB0、GPIOB1、GPIOB2引脚为高电平
+    Delay_ms(50); //延时100ms
+    Buffer_Clr(); //设置GPIOB0、GPIOB1、GPIOB2引脚为低电平
 }

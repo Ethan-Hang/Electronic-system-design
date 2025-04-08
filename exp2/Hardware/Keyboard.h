@@ -2,4 +2,4 @@
 #include <stdint.h>
 
 void Keyboard_Init(void);
-uint8_t Keyboard_Scan(void);
+int8_t Keyboard_Scan(void);

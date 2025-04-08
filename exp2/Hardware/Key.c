@@ -8,5 +8,4 @@ void Key_Init(void)
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_15;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
     GPIO_Init(GPIOA, &GPIO_InitStructure);
-    GPIO_SetBits(GPIOB, GPIO_Pin_15); //点亮LED
 }

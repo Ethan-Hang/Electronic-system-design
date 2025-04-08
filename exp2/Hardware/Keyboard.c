@@ -1,6 +1,7 @@
 #include "stm32f10x.h"
-#include "delay.h"
 #include "oled.h"
+#include "delay.h"
+#include "buffer.h"
 
 // 定义行引脚（输出）
 #define ROW1_PIN GPIO_Pin_0   // PB0
@@ -18,10 +19,10 @@
 
 // 键值映射表
 const uint8_t keymap[4][4] = {
-    {1, 2, 3, 4},    // 第1行
-    {5, 6, 7, 8},    // 第2行
-    {9, 10, 11, 12}, // 第3行
-    {13, 14, 15, 16} // 第4行
+    {1, 2, 3, 0x0A},    // 第1行
+    {4, 5, 6, 0x0B},    // 第2行
+    {7, 8, 9, 0x0C}, // 第3行
+    {0x2A, 0, 0x23, 0x0D} // 第4行
 };
 
 // 键盘初始化函数
@@ -62,7 +63,7 @@ void Keyboard_Init(void)
 }
 
 // 键盘扫描函数
-uint8_t Keyboard_Scan(void)
+int8_t Keyboard_Scan(void)
 {
     uint8_t keyValue = 0;
     uint16_t colStatus;
@@ -82,8 +83,9 @@ uint8_t Keyboard_Scan(void)
         while ((GPIO_ReadInputData(COL_PORT) & COL_PINS) != COL_PINS); // 等待释放
         Delay_ms(10); // 去抖
         GPIO_SetBits(GPIOB, ROW1_PIN);
-        OLED_Clear(); // 清屏
-        OLED_ShowNum(1, 1, keyValue, 2); // 显示键值
+        // OLED_Clear(); // 清屏
+        // OLED_ShowNum(1, 1, keyValue, 2); // 显示键值
+        Buffer_Once(); // 触发一次缓冲器
         return keyValue;
     }
     
@@ -102,8 +104,9 @@ uint8_t Keyboard_Scan(void)
         while ((GPIO_ReadInputData(COL_PORT) & COL_PINS) != COL_PINS);
         Delay_ms(10);
         GPIO_SetBits(GPIOB, ROW2_PIN);
-        OLED_Clear(); // 清屏
-        OLED_ShowNum(1, 1, keyValue, 2); // 显示键值
+        // OLED_Clear(); // 清屏
+        // OLED_ShowNum(1, 1, keyValue, 2); // 显示键值
+        Buffer_Once(); // 触发一次缓冲器
         return keyValue;
     }
     
@@ -121,8 +124,9 @@ uint8_t Keyboard_Scan(void)
         while ((GPIO_ReadInputData(COL_PORT) & COL_PINS) != COL_PINS);
         Delay_ms(10);
         GPIO_SetBits(GPIOA, ROW3_PIN);
-        OLED_Clear(); // 清屏
-        OLED_ShowNum(1, 1, keyValue, 2); // 显示键值
+        // OLED_Clear(); // 清屏
+        // OLED_ShowNum(1, 1, keyValue, 2); // 显示键值
+        Buffer_Once(); // 触发一次缓冲器
         return keyValue;
     }
     
@@ -141,13 +145,14 @@ uint8_t Keyboard_Scan(void)
         while ((GPIO_ReadInputData(COL_PORT) & COL_PINS) != COL_PINS);
         Delay_ms(10);
         GPIO_SetBits(GPIOB, ROW4_PIN);
-        OLED_Clear(); // 清屏
-        OLED_ShowNum(1, 1, keyValue, 2); // 显示键值
+        // OLED_Clear(); // 清屏
+        // OLED_ShowNum(1, 1, keyValue, 2); // 显示键值
+        Buffer_Once(); // 触发一次缓冲器
         return keyValue;
     }
     
     // 恢复所有行高电平
     GPIO_SetBits(GPIOB, ROW1_PIN | ROW2_PIN | ROW4_PIN);
     GPIO_SetBits(GPIOA, ROW3_PIN);
-    return 0; // 无按键按下
+    return -1; // 无按键按下
 }

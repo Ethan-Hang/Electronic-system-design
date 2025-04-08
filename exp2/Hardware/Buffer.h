@@ -5,3 +5,4 @@
 void Buffer_Init(void);
 void Buffer_Set(void);
 void Buffer_Clr(void);
+void Buffer_Once(void);
