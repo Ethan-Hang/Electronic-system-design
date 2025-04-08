@@ -30,3 +30,7 @@
 .\objects\main.o: .\Library\misc.h
 .\objects\main.o: .\System\Delay.h
 .\objects\main.o: .\Hardware\OLED.h
+.\objects\main.o: .\Hardware\LED.h
+.\objects\main.o: .\Hardware\Buffer.h
+.\objects\main.o: F:\Keli5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\objects\main.o: .\Hardware\Keyboard.h
