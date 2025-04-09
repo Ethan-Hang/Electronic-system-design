@@ -109,6 +109,13 @@ void DHT11_REC_Data(void)
             TH = T_H;
             TL = T_L;
         }
+        else
+        {
+            RH = 0;
+            RL = 0;
+            TH = 0;
+            TL = 0; // 数据错误，清零
+        }
     }
     rec_data[0] = RH;
     rec_data[1] = RL;
