@@ -1,5 +1,10 @@
-#pragma once
-#include <stdint.h>
+#ifndef __TIMER_H
+#define __TIMER_H
 
-// extern int a;
-extern void Timer_Init(void);
+#include "stm32f10x.h"
+
+extern uint32_t a;
+
+void Timer_Init(void);
+
+#endif
