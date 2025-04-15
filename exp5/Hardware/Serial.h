@@ -1,12 +1,16 @@
 #ifndef __SERIAL_H
 #define __SERIAL_H
 
-#include <stdio.h>
 #include "stm32f10x.h"                  // Device header
+#include <stdio.h>
+#include <stdarg.h>
+#include <stdbool.h>
 
 
 // extern char Serial_RxPacket[];
 // extern uint8_t Serial_RxFlag;
+extern bool g_ReceiveEnd;
+
 
 void Serial_Init(void);
 void Serial_SendByte(uint8_t Byte);
