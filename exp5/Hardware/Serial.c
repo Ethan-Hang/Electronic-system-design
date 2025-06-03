@@ -1,8 +1,10 @@
-#include "Serial.h"
+#include "stm32f10x.h" // Device header
+#include <stdio.h>
+#include <stdarg.h>
 
 char Serial_RxPacket[100]; //"@MSG\r\n"
 uint8_t Serial_RxFlag;
-bool g_ReceiveEnd = false;
+
 
 void Serial_Init(void)
 {
@@ -31,14 +33,14 @@ void Serial_Init(void)
 
 	USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
 
-	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+	// NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 
-	NVIC_InitTypeDef NVIC_InitStructure;
-	NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
-	NVIC_Init(&NVIC_InitStructure);
+	// NVIC_InitTypeDef NVIC_InitStructure;
+	// NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
+	// NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	// NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+	// NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+	// NVIC_Init(&NVIC_InitStructure);
 
 	USART_Cmd(USART1, ENABLE);
 }
@@ -101,39 +103,4 @@ void Serial_Printf(char *format, ...)
 	vsprintf(String, format, arg);
 	va_end(arg);
 	Serial_SendString(String);
-}
-
-void USART1_IRQHandler(void)
-{
-    static uint8_t rxIndex = 0;
-    const char* target = "Get Voltage";
-    
-    if (USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
-    {
-        char temp = USART_ReceiveData(USART1); //接收数据
-        
-        if (temp == target[rxIndex])
-        {
-            Serial_RxPacket[rxIndex] = temp;
-            rxIndex++;
-            
-            // 检查是否接收完整个字符串
-            if (rxIndex == 11)  // "Get Voltage" 的长度为11
-            {
-                g_ReceiveEnd = true;
-                rxIndex = 0;
-            }
-        }
-        else
-        {
-            rxIndex = 0;
-            if (temp == 'G')  // 如果接收到新的'G'，重新开始
-            {
-                Serial_RxPacket[rxIndex] = temp;
-                rxIndex++;
-            }
-        }
-        
-        USART_ClearITPendingBit(USART1, USART_IT_RXNE);
-    }
 }

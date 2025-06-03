@@ -26,11 +26,7 @@ int main()
 		OLED_ShowNum(1, 9, ADValue, 4);				//显示AD值
 		OLED_ShowNum(2, 9, Voltage, 1);				//显示电压值的整数部分
 		OLED_ShowNum(2, 11, (uint16_t)(Voltage * 100) % 100, 2);	//显示电压值的小数部分
-		if (g_ReceiveEnd)
-		{
-			Serial_Printf("Now Voltage is %.2fV\r\n", Voltage);	//通过串口打印AD值
-			g_ReceiveEnd = false;
-		}
+        Serial_Printf("ADValue:%f\r\n", Voltage);	//通过串口打印AD值
 		
 		Delay_ms(100);			//延时100ms，手动增加一些转换的间隔时间
 	}
