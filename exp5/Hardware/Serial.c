@@ -5,6 +5,7 @@
 char Serial_RxPacket[100]; //"@MSG\r\n"
 uint8_t Serial_RxFlag;
 
+// master分支测试
 
 void Serial_Init(void)
 {
