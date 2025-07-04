@@ -4,7 +4,7 @@
 
 char Serial_RxPacket[100]; //"@MSG\r\n"
 uint8_t Serial_RxFlag;
-
+// main分支标记
 
 void Serial_Init(void)
 {
